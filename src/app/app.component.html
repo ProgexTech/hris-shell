@@ -1,13 +1,21 @@
 <nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">HRIS</a>
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#">Users</a></li>
-          <li><a href="#">Leaves</a></li>
+          <li (click)="onClickUsers()"><a href="#">Users</a></li>
+          <li (click)="onClickLeaves()"><a href="#">Leaves</a></li>
         </ul>
     </div>
   </div>
 </nav>
+<div class="container">
+  <div *ngIf="showUsers">
+    <app-user></app-user>
+  </div>
+  <div *ngIf="showLeaves">
+    <app-leave-type></app-leave-type>
+  </div>
+</div>
