@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeaveTypeService } from '../leave-type.service';
 
 @Component({
   selector: 'app-leave-type',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveTypeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private leaveTypeService: LeaveTypeService) { }
 
   ngOnInit() {
   }

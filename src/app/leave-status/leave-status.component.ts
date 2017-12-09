@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeaveStatusService } from '../leave-status.service';
 
 @Component({
   selector: 'app-leave-status',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaveStatusComponent implements OnInit {
 
-  constructor() { }
+  constructor(private leaveStatusService: LeaveStatusService) { }
 
   ngOnInit() {
   }
