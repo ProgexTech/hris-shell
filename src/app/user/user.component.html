@@ -3,6 +3,24 @@
     <h3 class="panel-title">Users</h3>
   </div>
   <div class="panel-body">
-    No data found!
+    <div *ngIf="allUsers">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of allUsers">
+                <td>{{user.id}}</td>
+                <td>{{user.userName}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!allUsers">
+      No data found!
+    </div>
   </div>
 </div>
