@@ -9,16 +9,25 @@ export class AppComponent {
   title = 'HRIS';
 
   showUsers: boolean = false;
-  showLeaves: boolean = false;
+  showLeaveTypes: boolean = false;
+  showLeaveStatus: boolean = false;
 
   onClickUsers(): void {
     this.showUsers = true;
-    this.showLeaves = false;
+    this.showLeaveTypes = false;
+    this.showLeaveStatus = false;
   }
 
-  onClickLeaves(): void {
-    this.showLeaves = true;
+  onClickLeaveTypes(): void {
+    this.showLeaveTypes = true;
     this.showUsers = false;
+    this.showLeaveStatus = false;
+  }
+
+  onClickLeaveStatus(): void {
+    this.showLeaveStatus = true;
+    this.showUsers = false;
+    this.showLeaveTypes = false;
   }
 
 }

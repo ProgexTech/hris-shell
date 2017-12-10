@@ -1,3 +1,28 @@
-<p>
-  leave-status works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Leave Status</h3>
+  </div>
+  <div class="panel-body">
+    <div *ngIf="allLeaveStatus">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leaveStatus of allLeaveStatus">
+            <td>{{leaveStatus.code}}</td>
+            <td>{{leaveStatus.name}}</td>
+            <td>{{leaveStatus.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!allLeaveStatus">
+      No data found!
+    </div>
+  </div>
+</div>

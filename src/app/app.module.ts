@@ -13,6 +13,8 @@ import { LeaveStatusService } from './leave-status.service';
 
 import { HttpModule } from '@angular/http';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpModule } from '@angular/http';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [
     UserService,

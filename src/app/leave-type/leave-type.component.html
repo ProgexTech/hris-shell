@@ -3,6 +3,26 @@
     <h3 class="panel-title">Leave Types</h3>
   </div>
   <div class="panel-body">
-    No data found!
+    <div *ngIf="allLeaveTypes">
+      <table class="table">
+        <thead>
+          <tr>             
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leaveType of allLeaveTypes">
+            <td>{{leaveType.code}}</td>
+            <td>{{leaveType.name}}</td>
+            <td>{{leaveType.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!allLeaveTypes">
+      No data found!
+    </div>
   </div>
 </div>
