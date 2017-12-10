@@ -11,6 +11,8 @@ import { UserService } from './user.service';
 import { LeaveTypeService } from './leave-type.service';
 import { LeaveStatusService } from './leave-status.service';
 
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { LeaveStatusService } from './leave-status.service';
     LeaveTypeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [
     UserService,

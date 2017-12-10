@@ -9,12 +9,26 @@
               <tr>
                 <th>ID</th>
                 <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>NIC</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Active</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of allUsers">
                 <td>{{user.id}}</td>
                 <td>{{user.userName}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.nic}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.dob}}</td>
+                <td>{{user.active}}</td>
               </tr>
             </tbody>
         </table>

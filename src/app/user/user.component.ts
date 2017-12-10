@@ -10,11 +10,13 @@ import { User } from '../entities/user';
 export class UserComponent implements OnInit {
 
   allUsers: User[];
+  errorMessage: string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.allUsers = this.userService.getAllUsers();
+    this.userService.getAllUsers()
+      .subscribe(users => this.allUsers = users, err => this.errorMessage = <any>err);
   }
 
 }
