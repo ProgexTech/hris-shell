@@ -5,7 +5,14 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li><a [routerLink]="['/users']">Users</a></li>
+          <!--li><a [routerLink]="['/users']">Users</a></li-->
+          <li class="dropdown" dropdown>
+            <a dropdownToggle class="dropdown-toggle">Users <span class="caret"></span></a>
+            <ul *dropdownMenu class="dropdown-menu">
+              <li><a [routerLink]="['/users']">All Users</a></li>
+              <li><a [routerLink]="['/addUser']">Add New User</a></li>
+          </ul>
+          </li>
           <li class="dropdown" dropdown>
             <a dropdownToggle class="dropdown-toggle">Leaves <span class="caret"></span></a>
             <ul *dropdownMenu class="dropdown-menu">

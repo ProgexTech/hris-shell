@@ -15,6 +15,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AddUserComponent } from './add-user/add-user.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AppComponent,
     UserComponent,
     LeaveStatusComponent,
-    LeaveTypeComponent
+    LeaveTypeComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
       { path: 'users', component: UserComponent },
       { path: 'leaveTypes', component: LeaveTypeComponent },
       { path: 'leaveStatus', component: LeaveStatusComponent },
-      { path: 'addUser', component: LeaveStatusComponent }
+      { path: 'addUser', component: AddUserComponent }
     ])
   ],
   providers: [
