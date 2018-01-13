@@ -12,6 +12,7 @@ import { LeaveTypeService } from './leave-type.service';
 import { LeaveStatusService } from './leave-status.service';
 
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -26,7 +27,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   imports: [
     BrowserModule,
     HttpModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    RouterModule.forRoot([
+      { path: 'users', component: UserComponent },
+      { path: 'leaveTypes', component: LeaveTypeComponent },
+      { path: 'leaveStatus', component: LeaveStatusComponent },
+      { path: 'addUser', component: LeaveStatusComponent }
+    ])
   ],
   providers: [
     UserService,
