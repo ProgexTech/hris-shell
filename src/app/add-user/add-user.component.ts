@@ -8,9 +8,18 @@ import { User } from '../entities/user';
 })
 export class AddUserComponent implements OnInit {
 
+  user: User;
+  model: any = {};
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  addUser() {
+    this.user = this.model;
+    this.userService.addUser(this.user);
+    this.model = {};
   }
 
 }
