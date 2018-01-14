@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AddUserComponent } from './add-user/add-user.component';
+import { RoleComponent } from './role/role.component';
+import { PermissionComponent } from './permission/permission.component';
+import { PermissionService } from './permission.service';
+import { RoleService } from './role.service';
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import { AddUserComponent } from './add-user/add-user.component';
     UserComponent,
     LeaveStatusComponent,
     LeaveTypeComponent,
-    AddUserComponent
+    AddUserComponent,
+    RoleComponent,
+    PermissionComponent
   ],
   imports: [
     BrowserModule,
@@ -33,15 +39,21 @@ import { AddUserComponent } from './add-user/add-user.component';
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       { path: 'users', component: UserComponent },
+      { path: 'addUser', component: AddUserComponent },
       { path: 'leaveTypes', component: LeaveTypeComponent },
       { path: 'leaveStatus', component: LeaveStatusComponent },
-      { path: 'addUser', component: AddUserComponent }
+      { path: 'roles', component: RoleComponent },
+      { path: 'addRole', component: RoleComponent },
+      { path: 'permissions', component: PermissionComponent },
+      { path: 'addPermission', component: RoleComponent }
     ])
   ],
   providers: [
     UserService,
     LeaveTypeService,
-    LeaveStatusService
+    LeaveStatusService,
+    PermissionService,
+    RoleService
   ],
   bootstrap: [AppComponent]
 })

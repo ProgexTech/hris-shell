@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Permission</h3>
+        </div>
+        <div class="panel-body">
+          <textarea id="permString" name="permString" [(ngModel)]="model.permString" class="form-control" rows="3"></textarea>
+          <br/>
+          <button class="btn btn-primary" type="submit" (click)="addPermission()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">All Permissions</h3>
+        </div>
+        <div class="panel-body">
+          <div *ngIf="allPermissions">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Permission</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let perm of allPermissions">
+                  <td>{{perm.id}}</td>
+                  <td>{{perm.permString}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="!allPermissions">
+            No data found!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
