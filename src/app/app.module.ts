@@ -43,9 +43,7 @@ import { RoleService } from './role.service';
       { path: 'leaveTypes', component: LeaveTypeComponent },
       { path: 'leaveStatus', component: LeaveStatusComponent },
       { path: 'roles', component: RoleComponent },
-      { path: 'addRole', component: RoleComponent },
-      { path: 'permissions', component: PermissionComponent },
-      { path: 'addPermission', component: RoleComponent }
+      { path: 'permissions', component: PermissionComponent }
     ])
   ],
   providers: [
