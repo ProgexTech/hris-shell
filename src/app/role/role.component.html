@@ -1,40 +1,69 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Roles</h3>
-  </div>
-  <div class="panel-body">
-    <div *ngIf="allUsers">
-        <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>NIC</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>DOB</th>
-                <th>Active</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let user of allUsers">
-                <td>{{user.id}}</td>
-                <td>{{user.userName}}</td>
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.nic}}</td>
-                <td>{{user.address}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.dob}}</td>
-                <td>{{user.active}}</td>
-              </tr>
-            </tbody>
-        </table>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Role</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="type">Role Type</label>
+              <input type="text" class="form-control" id="type" name="type" [(ngModel)]="model.type">
+            </div>
+            <div class="form-group">
+              <label for="permissions">Permissions</label>
+              <div class="form-inline">
+                <select id="permissions" name="permissions" class="form-control long-input">
+                  <option *ngFor="let perm of allPermissions" (click)="onSelectAdd(perm)">{{perm.permString}}</option>
+                </select>
+                <a class="btn btn-success long-btn" (click)="addToSelectedPermissionList()">Add</a>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="selectedPermissions">Selected Permissions</label>
+              <div class="form-inline">
+                <select id="selectedPermissions" name="selectedPermissions" multiple class="form-control long-input">
+                  <option *ngFor="let perm of selectedPermissions" (click)="onSelectRemove(perm)">{{perm.permString}}</option>
+                </select>
+                <a class="btn btn-success long-btn" (click)="removeFromSelectedPermissionList()">Remove</a>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit" (click)="addRole()">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">All Roles</h3>
+          </div>
+          <div class="panel-body">
+            <div *ngIf="allRoles">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Role Type</th>
+                    <th>Permissions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let role of allRoles">
+                    <td>{{role.id}}</td>
+                    <td>{{role.type}}</td>
+                    <td>{{role.permission}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="!allRoles">
+              No data found!
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div *ngIf="!allUsers">
-      No data found!
-    </div>
   </div>
-</div>
+  
+  
+  
