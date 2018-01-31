@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Department</h3>
+        </div>
+        <div class="panel-body">
+          <textarea id="name" name="name" [(ngModel)]="model.name" class="form-control" rows="3"></textarea>
+          <br/>
+          <button class="btn btn-primary" type="submit" (click)="addDepartment()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">All Departments</h3>
+        </div>
+        <div class="panel-body">
+          <div *ngIf="allDepartments">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Department Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let dep of allDepartments">
+                  <td>{{dep.id}}</td>
+                  <td>{{dep.name}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="!allDepartments">
+            No data found!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
