@@ -21,11 +21,13 @@ export class PermissionComponent implements OnInit {
   }
 
   addPermission() {
-    this.permissionService.addPermission(this.model);
-    this.model = {};
+    this.permissionService.addPermission(this.model)
+      .subscribe(data => {
+        this.permissionService.getAllPermissions()
+        .subscribe(permissions => this.allPermissions = permissions, err => this.errorMessage = <any>err);
+      },err => this.errorMessage = <any>err);
 
-    this.permissionService.getAllPermissions()
-      .subscribe(permissions => this.allPermissions = permissions, err => this.errorMessage = <any>err);
+    this.model = {};
   }
 
 }

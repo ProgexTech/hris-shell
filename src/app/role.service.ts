@@ -21,9 +21,10 @@ export class RoleService {
       .catch(this.handleError);
   }
 
-  addRole(role: Role): void {
-    this.http.post(this.addRoleUrl, role)
-      .subscribe();
+  addRole(role: Role) {
+    return this.http.post(this.addRoleUrl, role)
+      //.subscribe();
+      .map((response: any) => { return response; });
   }
 
   private handleError(err: Response) {

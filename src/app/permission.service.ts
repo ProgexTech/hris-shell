@@ -21,9 +21,10 @@ export class PermissionService {
       .catch(this.handleError);
   }
 
-  addPermission(permission: Permission): void {
-    this.http.post(this.addPermissionsUrl, permission)
-      .subscribe();
+  addPermission(permission: Permission) {
+    return this.http.post(this.addPermissionsUrl, permission)
+      //.subscribe();
+      .map((response: any) => { return response; });
   }
 
   private handleError(err: Response) {

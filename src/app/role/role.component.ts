@@ -25,16 +25,23 @@ export class RoleComponent implements OnInit {
     this.roleService.getAllRoles()
       .subscribe(allRoles => this.allRoles = allRoles, err => this.errorMessage = <any>err);
     this.permissionService.getAllPermissions()
-      .subscribe(permissions => this.allPermissions = permissions, err => this.errorMessage = <any>err);
+      .subscribe(permissions => {
+        this.allPermissions = permissions; 
+        if (permissions) {
+          this.selectedPermToAdd = permissions[0];
+        }
+      }, err => this.errorMessage = <any>err);
   }
 
   addRole() {
     this.model.permission = this.selectedPermissions;
-    this.roleService.addRole(this.model);
-    this.model = {};
+    this.roleService.addRole(this.model)
+      .subscribe(data => {
+        this.roleService.getAllRoles()
+        .subscribe(allRoles => this.allRoles = allRoles, err => this.errorMessage = <any>err);
+      }, err => this.errorMessage = <any>err);
 
-    this.roleService.getAllRoles()
-      .subscribe(allRoles => this.allRoles = allRoles, err => this.errorMessage = <any>err);
+    this.model = {};
   }
 
   addToSelectedPermissionList() {
