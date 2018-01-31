@@ -6,43 +6,50 @@
     <form class="form-horizontal">
       <div class="form-group">
         <label for="firstName" class="col-sm-2 control-label">First Name</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="firstName" id="firstName" placeholder="" [(ngModel)]="model.firstName">
         </div>
       </div>
       <div class="form-group">
         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="lastName" id="lastName" placeholder="" [(ngModel)]="model.lastName">
         </div>
       </div>
       <div class="form-group">
         <label for="nic" class="col-sm-2 control-label">NIC</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="nic" id="nic" placeholder="" [(ngModel)]="model.nic">
         </div>
       </div>
       <div class="form-group">
         <label for="address" class="col-sm-2 control-label">Address</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="address"  id="address" placeholder="" [(ngModel)]="model.address">
         </div>
       </div>
       <div class="form-group">
         <label for="email" class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="email" class="form-control" name="email" id="email" placeholder="" [(ngModel)]="model.email">
         </div>
       </div>
+      <!-- Contacts -->
+      <div class="form-group">
+        <label for="ph_home" class="col-sm-2 control-label">Contacts</label>
+        <div class="col-sm-3"><input type="text" class="form-control" name="ph_home" id="ph_home" placeholder="Home" [(ngModel)]="ph_home"></div>
+        <div class="col-sm-3"><input type="text" class="form-control" name="ph_mobile" id="ph_mobile" placeholder="Mobile" [(ngModel)]="ph_mobile"></div>
+        <div class="col-sm-3"><input type="text" class="form-control" name="ph_office" id="ph_office" placeholder="Office" [(ngModel)]="ph_office"></div>
+      </div>
       <div class="form-group">
         <label for="dob" class="col-sm-2 control-label">DOB</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="dob" id="dob" placeholder="" [(ngModel)]="model.dob">
         </div>
       </div>
       <div class="form-group">
         <label for="dob" class="col-sm-2 control-label">Role</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select id="roles" name="roles" class="form-control long-input">
             <option *ngFor="let role of allRoles" (click)="onSelectRole(role)">{{role.type}}</option>
           </select>
@@ -50,7 +57,7 @@
       </div>
       <div class="form-group">
         <label for="dob" class="col-sm-2 control-label">Department</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select id="departments" name="departments" class="form-control long-input">
             <option *ngFor="let department of allDepartments" (click)="onSelectDepartment(department)">{{department.name}}</option>
           </select>
@@ -58,7 +65,7 @@
       </div>
       <div class="form-group">
         <label for="dob" class="col-sm-2 control-label">Designation</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <select id="designations" name="designations" class="form-control long-input">
             <option *ngFor="let designation of allDesignations" (click)="onSelectDesignation(designation)">{{designation.title}}</option>
           </select>
@@ -66,25 +73,25 @@
       </div>
       <div class="form-group">
         <label for="userName" class="col-sm-2 control-label">Username</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="userName" id="userName" placeholder="" [(ngModel)]="model.userName">
         </div>
       </div>
       <div class="form-group">
         <label for="password" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-10">
+        <div class="col-sm-9">
           <input type="password" class="form-control" name="password" id="password" placeholder="" [(ngModel)]="model.password">
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-9">
           <div class="checkbox">
             <label><input type="checkbox" name="active" [(ngModel)]="model.active"> Active</label>
           </div>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-9">
           <button type="submit" class="btn btn-primary" (click)="addUser()">Add</button>
         </div>
       </div>

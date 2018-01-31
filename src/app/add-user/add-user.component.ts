@@ -14,15 +14,15 @@ import { Role } from '../entities/role';
 })
 export class AddUserComponent implements OnInit {
 
-  allUsers: User[];
   allRoles: Role[];
   allDepartments: Department[];
   allDesignations: Designation[];
   errorMessage: string;
   model: any = {};
 
-  //selectedRole: Role;
-  //selectedDepartment: Department;
+  ph_home: string;
+  ph_mobile: string;
+  ph_office: string;
 
   constructor(
     private userService: UserService,
@@ -32,15 +32,11 @@ export class AddUserComponent implements OnInit {
   { }
 
   ngOnInit() {
-    this.userService.getAllUsers()
-      .subscribe(users => this.allUsers = users, err => this.errorMessage = <any>err);
-
     this.departmentService.getAllDepartments()
       .subscribe(departments => { 
         this.allDepartments = departments; 
         if (departments) {
-          //this.selectedDepartment = departments[0];
-          this.model.department = departments[0];
+          this.model.departmentId = departments[0].id;
         }
       }, err => this.errorMessage = <any>err);
 
@@ -48,8 +44,7 @@ export class AddUserComponent implements OnInit {
       .subscribe(roles => { 
         this.allRoles = roles; 
         if (roles) {
-          //this.selectedRole = roles[0];
-          this.model.role = roles[0];
+          this.model.roleId = roles[0].id;
         }
       }, err => this.errorMessage = <any>err);
 
@@ -57,26 +52,46 @@ export class AddUserComponent implements OnInit {
       .subscribe(designations => {
         this.allDesignations = designations;
         if (designations) {
-          this.model.designation = designations[0];
+          this.model.designationId = designations[0].id;
         }
       }, err => this.errorMessage = <any>err);
   }
 
   addUser() {
+    var cnt = 0;
+    if (this.ph_home) { cnt++; }
+    if (this.ph_mobile) { cnt++; }
+    if (this.ph_office) { cnt++; }
+    console.log(cnt);
+
+    var contactsx: any[] = new Array(cnt);
+    cnt = 0;
+    if (this.ph_home) {
+      contactsx[cnt++] = {"type": "HOME", "number": this.ph_home};
+    }
+    if (this.ph_mobile) {
+      contactsx[cnt++] = {"type": "MOBILE", "number": this.ph_mobile};
+    }
+    if (this.ph_office) {
+      contactsx[cnt++] = {"type": "OFFICE", "number": this.ph_office};
+    }
+
+    this.model.contacts = contactsx;
+    console.log( JSON.stringify(contactsx));
     this.userService.addUser(this.model);
     this.model = {};
   }
 
   onSelectRole(role) {
-    this.model.role = role;
+    this.model.roleId = role.id;
   }
 
   onSelectDepartment(department) {
-    this.model.department = department;
+    this.model.departmentId = department.id;
   }
 
   onSelectDesignation(designation) {
-    this.model.designation = designation;
+    this.model.designationId = designation.id;
   }
 
 }
