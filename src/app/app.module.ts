@@ -22,6 +22,8 @@ import { PermissionService } from './permission.service';
 import { RoleService } from './role.service';
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentService } from './department.service';
+import { DesignationComponent } from './designation/designation.component';
+import { DesignationService } from './designation.service';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { DepartmentService } from './department.service';
     AddUserComponent,
     RoleComponent,
     PermissionComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    DesignationComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { DepartmentService } from './department.service';
       { path: 'leaveStatus', component: LeaveStatusComponent },
       { path: 'roles', component: RoleComponent },
       { path: 'permissions', component: PermissionComponent },
-      { path: 'departments', component: DepartmentComponent }
+      { path: 'departments', component: DepartmentComponent },
+      { path: 'designations', component: DesignationComponent }
     ])
   ],
   providers: [
@@ -56,7 +60,8 @@ import { DepartmentService } from './department.service';
     LeaveStatusService,
     PermissionService,
     RoleService,
-    DepartmentService
+    DepartmentService,
+    DesignationService
   ],
   bootstrap: [AppComponent]
 })
