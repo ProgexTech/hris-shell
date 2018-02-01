@@ -13,8 +13,8 @@
             <div class="form-group">
               <label for="permissions">Permissions</label>
               <div class="form-inline">
-                <select id="permissions" name="permissions" class="form-control long-input">
-                  <option *ngFor="let perm of allPermissions" (click)="onSelectAdd(perm)">{{perm.permString}}</option>
+                <select id="permissions" name="permissions" class="form-control long-input" [(ngModel)]="selectedPermToAdd" (ngModelChange)="onSelectAdd($event)">
+                  <option *ngFor="let perm of allPermissions" [ngValue]="perm">{{perm.permString}}</option>
                 </select>
                 <a class="btn btn-success long-btn" (click)="addToSelectedPermissionList()">Add</a>
               </div>
@@ -22,8 +22,8 @@
             <div class="form-group">
               <label for="selectedPermissions">Selected Permissions</label>
               <div class="form-inline">
-                <select id="selectedPermissions" name="selectedPermissions" multiple class="form-control long-input">
-                  <option *ngFor="let perm of selectedPermissions" (click)="onSelectRemove(perm)">{{perm.permString}}</option>
+                <select id="selectedPermissions" name="selectedPermissions" size="3" class="form-control long-input" [(ngModel)]="selectedPermToRemove" (ngModelChange)="onSelectRemove($event)">
+                  <option *ngFor="let perm of selectedPermissions" [ngValue]="perm">{{perm.permString}}</option>
                 </select>
                 <a class="btn btn-success long-btn" (click)="removeFromSelectedPermissionList()">Remove</a>
               </div>

@@ -44,23 +44,15 @@ export class RoleComponent implements OnInit {
     this.model = {};
   }
 
-  addToSelectedPermissionList() {
-    if (this.selectedPermToAdd !== undefined) {
-      this.selectedPermissions.push(this.selectedPermToAdd);
-      this.selectedPermToAdd = undefined;
-    }
-  }
-
   onSelectAdd(perm) {
     this.selectedPermToAdd = perm;
   }
 
-  removeFromSelectedPermissionList() {
-    if (this.selectedPermToRemove !== undefined) {
-      var index = this.selectedPermissions.indexOf(this.selectedPermToRemove, 0);
-      if (index > -1) {
-        this.selectedPermissions.splice(index, 1);
-        this.selectedPermToRemove = undefined;
+  addToSelectedPermissionList() {
+    if (this.selectedPermToAdd != undefined) {
+      var index = this.selectedPermissions.indexOf(this.selectedPermToAdd, 0);
+      if (index == -1) {
+        this.selectedPermissions.push(this.selectedPermToAdd);
       }
     }
   }
@@ -68,5 +60,13 @@ export class RoleComponent implements OnInit {
   onSelectRemove(perm) {
     this.selectedPermToRemove = perm;
   }
-
+ 
+  removeFromSelectedPermissionList() {
+    if (this.selectedPermToRemove != undefined) {
+      var index = this.selectedPermissions.indexOf(this.selectedPermToRemove, 0);
+      if (index > -1) {
+        this.selectedPermissions.splice(index, 1);
+      }
+    }
+  }
 }

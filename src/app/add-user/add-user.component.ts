@@ -62,22 +62,22 @@ export class AddUserComponent implements OnInit {
     if (this.ph_home) { cnt++; }
     if (this.ph_mobile) { cnt++; }
     if (this.ph_office) { cnt++; }
-    console.log(cnt);
+    //console.log(cnt);
 
-    var contactsx: any[] = new Array(cnt);
+    var contacts: any[] = new Array(cnt);
     cnt = 0;
     if (this.ph_home) {
-      contactsx[cnt++] = {"type": "HOME", "number": this.ph_home};
+      contacts[cnt++] = {"type": "HOME", "number": this.ph_home};
     }
     if (this.ph_mobile) {
-      contactsx[cnt++] = {"type": "MOBILE", "number": this.ph_mobile};
+      contacts[cnt++] = {"type": "MOBILE", "number": this.ph_mobile};
     }
     if (this.ph_office) {
-      contactsx[cnt++] = {"type": "OFFICE", "number": this.ph_office};
+      contacts[cnt++] = {"type": "OFFICE", "number": this.ph_office};
     }
 
-    this.model.contacts = contactsx;
-    console.log( JSON.stringify(contactsx));
+    this.model.contacts = contacts;
+    //console.log( JSON.stringify(contacts));
     this.userService.addUser(this.model);
     this.model = {};
   }
