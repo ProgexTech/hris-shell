@@ -24,6 +24,8 @@ import { DepartmentComponent } from './department/department.component';
 import { DepartmentService } from './department.service';
 import { DesignationComponent } from './designation/designation.component';
 import { DesignationService } from './designation.service';
+import { WorkDayComponent } from './work-day/work-day.component';
+import { WorkDayService } from './work-day.service';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { DesignationService } from './designation.service';
     RoleComponent,
     PermissionComponent,
     DepartmentComponent,
-    DesignationComponent
+    DesignationComponent,
+    WorkDayComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { DesignationService } from './designation.service';
       { path: 'roles', component: RoleComponent },
       { path: 'permissions', component: PermissionComponent },
       { path: 'departments', component: DepartmentComponent },
-      { path: 'designations', component: DesignationComponent }
+      { path: 'designations', component: DesignationComponent },
+      { path: 'workDay', component: WorkDayComponent }
     ])
   ],
   providers: [
@@ -61,7 +65,8 @@ import { DesignationService } from './designation.service';
     PermissionService,
     RoleService,
     DepartmentService,
-    DesignationService
+    DesignationService,
+    WorkDayService
   ],
   bootstrap: [AppComponent]
 })

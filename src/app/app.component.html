@@ -5,18 +5,23 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <!--li><a [routerLink]="['/users']">Users</a></li-->
           <li class="dropdown" dropdown>
-            <a dropdownToggle class="dropdown-toggle">System <span class="caret"></span></a>
+            <a dropdownToggle class="dropdown-toggle">Users <span class="caret"></span></a>
             <ul *dropdownMenu class="dropdown-menu">
               <li><a [routerLink]="['/addUser']">Add New User</a></li>
               <li><a [routerLink]="['/users']">All Users</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" dropdown>
+            <a dropdownToggle class="dropdown-toggle">Manage <span class="caret"></span></a>
+            <ul *dropdownMenu class="dropdown-menu">
               <li><a [routerLink]="['/roles']">All Roles</a></li>
               <li><a [routerLink]="['/designations']">All Designations</a></li>
               <li><a [routerLink]="['/permissions']">All Permissions</a></li>
               <li><a [routerLink]="['/departments']">All Departments</a></li>
               <li><a [routerLink]="['/leaveTypes']">All Leave Types</a></li>
               <li><a [routerLink]="['/leaveStatus']">All Leave Status</a></li>
+              <li><a [routerLink]="['/workDay']">All Work Days</a></li>
             </ul>
           </li>
         </ul>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Work Day Category</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="name">Category Name</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name">
+            </div>
+            <button class="btn btn-primary" type="submit" (click)="addCategory()">Add</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">All Work Day Categories</h3>
+          </div>
+          <div class="panel-body">
+            <div *ngIf="allWorkDayCategories">
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th>Category Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cat of allWorkDayCategories">
+                    <td>{{cat.name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div *ngIf="!allWorkDayCategories">
+              No data found!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
