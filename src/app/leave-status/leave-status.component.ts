@@ -11,12 +11,23 @@ export class LeaveStatusComponent implements OnInit {
 
   allLeaveStatus: LeaveStatus[];
   errorMessage: string;
+  model: any = {};
 
   constructor(private leaveStatusService: LeaveStatusService) { }
 
   ngOnInit() {
     this.leaveStatusService.getAllLeaveStatus()
       .subscribe(leaveStatus => this.allLeaveStatus = leaveStatus, err => this.errorMessage = <any>err);
+  }
+
+  addLeaveStatus() {
+    this.leaveStatusService.addLeaveStatus(this.model)
+    .subscribe(data => {
+      this.leaveStatusService.getAllLeaveStatus()
+      .subscribe(leaveStatus => this.allLeaveStatus = leaveStatus, err => this.errorMessage = <any>err);
+    },err => this.errorMessage = <any>err);
+
+    this.model = {};
   }
 
 }

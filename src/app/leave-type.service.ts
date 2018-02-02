@@ -9,15 +9,22 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class LeaveTypeService {
 
-  private url = 'http://localhost:8080/api/leaveTypes';
+  private getAllLeaveTypesUrl = 'http://localhost:8080/api/leaveTypes';
+  private addLeaveTypeUrl = 'http://localhost:8080/api/leaveTypes';
 
   constructor(private http: Http) { }
 
   getAllLeaveTypes(): Observable<LeaveType[]> {
-    return this.http.get(this.url)
+    return this.http.get(this.getAllLeaveTypesUrl)
       .map((response: Response) => <LeaveType[]>response.json())
       .do(data => console.log('Result: ' + JSON.stringify(data)))
       .catch(this.handleError);
+  }
+
+  addLeaveType(leaveType: LeaveType) {
+    return this.http.post(this.addLeaveTypeUrl, leaveType)
+      //.subscribe();
+      .map((response: any) => { return response; });
   }
 
   private handleError(err: Response) {
