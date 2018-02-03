@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">Add New User</h3>
   </div>
@@ -42,9 +42,9 @@
         <div class="col-sm-3"><input type="text" class="form-control" name="ph_office" id="ph_office" placeholder="Office" [(ngModel)]="ph_office"></div>
       </div>
       <div class="form-group">
-        <label for="dob" class="col-sm-2 control-label">DOB</label>
+        <label for="dob" class="col-sm-2 control-label">Date of Birth</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" name="dob" id="dob" placeholder="" [(ngModel)]="model.dob">
+          <input type="text" class="form-control" name="dob" id="dob" placeholder="" #dp="bsDatepicker" bsDatepicker [(ngModel)]="model.dob">
         </div>
       </div>
       <div class="form-group">

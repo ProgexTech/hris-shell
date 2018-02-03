@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AddUserComponent } from './add-user/add-user.component';
 import { RoleComponent } from './role/role.component';
 import { PermissionComponent } from './permission/permission.component';
@@ -48,6 +49,7 @@ import { WorkDayService } from './work-day.service';
     FormsModule,
     BsDropdownModule.forRoot(),
     TimepickerModule.forRoot(),
+    BsDatepickerModule.forRoot(),
     RouterModule.forRoot([
       { path: 'users', component: UserComponent },
       { path: 'addUser', component: AddUserComponent },

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">Role</h3>
           </div>
@@ -22,7 +22,7 @@
             <div class="form-group">
               <label for="selectedPermissions">Selected Permissions</label>
               <div class="form-inline">
-                <select id="selectedPermissions" name="selectedPermissions" size="3" class="form-control long-input" [(ngModel)]="selectedPermToRemove" (ngModelChange)="onSelectRemove($event)">
+                <select id="selectedPermissions" name="selectedPermissions" size="5" class="form-control long-input" [(ngModel)]="selectedPermToRemove" (ngModelChange)="onSelectRemove($event)">
                   <option *ngFor="let perm of selectedPermissions" [ngValue]="perm">{{perm.permString}}</option>
                 </select>
                 <a class="btn btn-success long-btn" (click)="removeFromSelectedPermissionList()">Remove</a>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-default">
+        <div class="panel panel-info">
           <div class="panel-heading">
             <h3 class="panel-title">All Roles</h3>
           </div>
