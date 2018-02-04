@@ -28,6 +28,8 @@ import { DesignationComponent } from './designation/designation.component';
 import { DesignationService } from './designation.service';
 import { WorkDayComponent } from './work-day/work-day.component';
 import { WorkDayService } from './work-day.service';
+import { HolidayComponent } from './holiday/holiday.component';
+import { HolidayService } from './holiday.service';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { WorkDayService } from './work-day.service';
     PermissionComponent,
     DepartmentComponent,
     DesignationComponent,
-    WorkDayComponent
+    WorkDayComponent,
+    HolidayComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { WorkDayService } from './work-day.service';
       { path: 'permissions', component: PermissionComponent },
       { path: 'departments', component: DepartmentComponent },
       { path: 'designations', component: DesignationComponent },
-      { path: 'workDay', component: WorkDayComponent }
+      { path: 'workDay', component: WorkDayComponent },
+      { path: 'holiday', component: HolidayComponent }
     ])
   ],
   providers: [
@@ -70,7 +74,8 @@ import { WorkDayService } from './work-day.service';
     RoleService,
     DepartmentService,
     DesignationService,
-    WorkDayService
+    WorkDayService,
+    HolidayService
   ],
   bootstrap: [AppComponent]
 })

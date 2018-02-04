@@ -1,69 +1,67 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Role</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Role</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="type">Role Type</label>
+            <input type="text" class="form-control" id="type" name="type" [(ngModel)]="model.type">
           </div>
-          <div class="panel-body">
-            <div class="form-group">
-              <label for="type">Role Type</label>
-              <input type="text" class="form-control" id="type" name="type" [(ngModel)]="model.type">
+          <div class="form-group">
+            <label for="permissions">Permissions</label>
+            <div class="form-inline">
+              <select id="permissions" name="permissions" class="form-control long-input" [(ngModel)]="selectedPermToAdd" (ngModelChange)="onSelectAdd($event)">
+                <option *ngFor="let perm of allPermissions" [ngValue]="perm">{{perm.permString}}</option>
+              </select>
+              <a class="btn btn-success long-btn" (click)="addToSelectedPermissionList()">Add</a>
             </div>
-            <div class="form-group">
-              <label for="permissions">Permissions</label>
-              <div class="form-inline">
-                <select id="permissions" name="permissions" class="form-control long-input" [(ngModel)]="selectedPermToAdd" (ngModelChange)="onSelectAdd($event)">
-                  <option *ngFor="let perm of allPermissions" [ngValue]="perm">{{perm.permString}}</option>
-                </select>
-                <a class="btn btn-success long-btn" (click)="addToSelectedPermissionList()">Add</a>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="selectedPermissions">Selected Permissions</label>
-              <div class="form-inline">
-                <select id="selectedPermissions" name="selectedPermissions" size="5" class="form-control long-input" [(ngModel)]="selectedPermToRemove" (ngModelChange)="onSelectRemove($event)">
-                  <option *ngFor="let perm of selectedPermissions" [ngValue]="perm">{{perm.permString}}</option>
-                </select>
-                <a class="btn btn-success long-btn" (click)="removeFromSelectedPermissionList()">Remove</a>
-              </div>
-            </div>
-            <button class="btn btn-primary" type="submit" (click)="addRole()">Add</button>
           </div>
+          <div class="form-group">
+            <label for="selectedPermissions">Selected Permissions</label>
+            <div class="form-inline">
+              <select id="selectedPermissions" name="selectedPermissions" size="5" class="form-control long-input" [(ngModel)]="selectedPermToRemove"
+                (ngModelChange)="onSelectRemove($event)">
+                <option *ngFor="let perm of selectedPermissions" [ngValue]="perm">{{perm.permString}}</option>
+              </select>
+              <a class="btn btn-success long-btn" (click)="removeFromSelectedPermissionList()">Remove</a>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit" (click)="addRole()">Add</button>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">All Roles</h3>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">All Roles</h3>
+        </div>
+        <div class="panel-body">
+          <div *ngIf="allRoles">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Role Type</th>
+                  <th>Permissions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let role of allRoles">
+                  <td>{{role.id}}</td>
+                  <td>{{role.type}}</td>
+                  <td>{{role.permission}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="panel-body">
-            <div *ngIf="allRoles">
-              <table class="table table-condensed">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Role Type</th>
-                    <th>Permissions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let role of allRoles">
-                    <td>{{role.id}}</td>
-                    <td>{{role.type}}</td>
-                    <td>{{role.permission}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div *ngIf="!allRoles">
-              No data found!
-            </div>
+          <div *ngIf="!allRoles">
+            No data found!
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
-  
+</div>

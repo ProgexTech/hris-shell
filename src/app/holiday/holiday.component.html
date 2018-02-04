@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Holidays</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-inline">
+            <div class="form-group">
+              <select id="allYears" name="allYears" class="form-control long-input" [(ngModel)]="selectedYear" (ngModelChange)="onYearChange($event)">
+                <option *ngFor="let perm of allYears" [ngValue]="perm">{{perm}}</option>
+              </select>
+              <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [minDate]="minDate" [maxDate]="maxDate" [(bsValue)]="model.date">
+              <button type="button" class="btn btn-primary" (click)="addNewHoliday()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Holiday
+              </button>
+            </div>
+          </div>
+          <br/>
+          <div *ngIf="allHolidays?.length != 0">
+            <table class="table table-condensed">
+              <tbody>
+                <tr *ngFor="let holiday of allHolidays">
+                  <td>{{holiday.date | date: 'MM/dd/yyyy'}}</td>
+                  <td>{{holiday.date | date: 'fullDate'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div *ngIf="!allHolidays || allHolidays?.length == 0">
+            No Holidays found!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
