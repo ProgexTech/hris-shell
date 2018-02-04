@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HolidayService } from '../holiday.service';
 import { Holiday } from '../entities/holiday';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-holiday',
@@ -18,7 +19,12 @@ export class HolidayComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
 
-  constructor(private holidayService: HolidayService) {}
+  formattedHolidays: any[] = [];
+  monthNames: string[] = [
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  constructor(private holidayService: HolidayService) { }
 
   ngOnInit() {
     var today = new Date;
@@ -31,7 +37,10 @@ export class HolidayComponent implements OnInit {
     this.selectedYear = today.getFullYear();
 
     this.holidayService.getAllHolidaysByYear(this.selectedYear)
-      .subscribe(allHolidays => this.allHolidays = allHolidays, err => this.errorMessage = <any>err);
+      .subscribe(allHolidays => {
+        this.allHolidays = allHolidays;
+        this.prepareHolidays();
+      }, err => this.errorMessage = <any>err);
   }
 
   onYearChange(year) {
@@ -40,18 +49,56 @@ export class HolidayComponent implements OnInit {
     this.selectedYear = year;
 
     this.holidayService.getAllHolidaysByYear(this.selectedYear)
-      .subscribe(allHolidays => this.allHolidays = allHolidays, err => this.errorMessage = <any>err);
+      .subscribe(allHolidays => {
+        this.allHolidays = allHolidays;
+        this.prepareHolidays();
+      }, err => this.errorMessage = <any>err);
   }
 
   addNewHoliday() {
-    if (this.model) {
+    if (this.model && this.model.date) {
       this.holidayService.addHoliday(this.model)
         .subscribe(data => {
           this.holidayService.getAllHolidaysByYear(this.selectedYear)
-            .subscribe(allHolidays => this.allHolidays = allHolidays, err => this.errorMessage = <any>err);
+            .subscribe(allHolidays => {
+              this.allHolidays = allHolidays;
+              this.prepareHolidays();
+            }, err => this.errorMessage = <any>err);
         }, err => this.errorMessage = <any>err);
     }
     this.model = {};
+  }
+
+  private prepareHolidays() {
+    this.formattedHolidays = [];
+    for (var month = 0; month < 12; month++) {
+      let obj: any = {};
+      let holidays: Holiday[] = [];
+      if (this.allHolidays) {
+        for (let h of this.allHolidays) {
+          let d: Date = new Date(h.date);
+          if (d.getMonth() == month) {
+            holidays.push(h);
+          }
+        }
+      }
+      if (holidays.length != 0) {
+        obj.month = this.monthNames[month];
+        obj.holidays = holidays;
+        this.formattedHolidays.push(obj);
+      }
+    }
+  }
+
+  removeHoliday(holiday: Holiday) {
+    this.holidayService.removeHoliday(holiday)
+      .subscribe(data => {
+        this.holidayService.getAllHolidaysByYear(this.selectedYear)
+          .subscribe(allHolidays => {
+            this.allHolidays = allHolidays;
+            this.prepareHolidays();
+          }, err => this.errorMessage = <any>err);
+      }, err => this.errorMessage = <any>err);
   }
 
 }

@@ -19,11 +19,24 @@
           </div>
           <br/>
           <div *ngIf="allHolidays?.length != 0">
-            <table class="table table-condensed">
+            <table class="table table-condensed" *ngFor="let fh of formattedHolidays">
+              <colgroup>
+                <col class="col-sm-3" />
+                <col class="col-sm-6" />
+                <col class="col-sm-3" />
+              </colgroup>
               <tbody>
-                <tr *ngFor="let holiday of allHolidays">
-                  <td>{{holiday.date | date: 'MM/dd/yyyy'}}</td>
-                  <td>{{holiday.date | date: 'fullDate'}}</td>
+                <tr class="active">
+                  <th colspan="3">{{fh.month}}</th>
+                </tr>
+                <tr *ngFor="let h of fh.holidays">
+                  <td>{{h.date | date: 'MM/dd/yyyy'}}</td>
+                  <td>{{h.date | date: 'fullDate'}}</td>
+                  <td>
+                    <button type="button" class="btn btn-danger btn-xs" (click)="removeHoliday(h)">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>

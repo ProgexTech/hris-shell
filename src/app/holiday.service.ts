@@ -13,6 +13,7 @@ export class HolidayService {
   private addHolidayUrl = 'http://localhost:8080/api/holidays';
   private getAllYearsUrl = 'http://localhost:8080/api/holidays/years';
   private getAllHolidaysByYearUrl = 'http://localhost:8080/api/holidays/byYear/';
+  private removeHolidayUrl = 'http://localhost:8080/api/holidays/';
 
   constructor(private http: Http) { }
 
@@ -34,14 +35,22 @@ export class HolidayService {
     var url = this.getAllHolidaysByYearUrl + year;
     console.log(url);
     return this.http.get(this.getAllHolidaysByYearUrl + year)
-    .map((response: Response) => <Holiday[]>response.json())
-    .do(data => console.log('Result: ' + JSON.stringify(data)))
-    .catch(this.handleError);
+      .map((response: Response) => <Holiday[]>response.json())
+      .do(data => console.log('Result: ' + JSON.stringify(data)))
+      .catch(this.handleError);
   }
 
   addHoliday(holiday: Holiday) {
+    console.log("Adding: " + holiday.date);
     return this.http.post(this.addHolidayUrl, holiday)
       //.subscribe();
+      .map((response: any) => { return response; });
+  }
+
+  removeHoliday(holiday: Holiday) {
+    console.log("Deleting: " + holiday.id);
+    return this.http.delete(this.removeHolidayUrl + holiday.id)
+      //.subscribe((res) => {return res;});
       .map((response: any) => { return response; });
   }
 
